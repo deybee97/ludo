@@ -1,0 +1,131 @@
+body{
+
+  background-color: #0A1931;
+padding: 40px 0;
+
+}
+h1{
+    text-align: center;
+    color: #fff;
+}
+.board{
+  width: 525px;
+  height: 525px;
+  background-color: #fff;
+  margin: 10px auto;
+  position: relative;
+}
+/* the sections */
+.rec1{
+  height: 210px;
+  /* background-color: green; */
+}
+.rec2{
+  height: 105px;
+  background-color: #fff;
+}
+.rec3{
+
+  height:210px;
+  /* background-color: blue; */
+}
+/*middlesection*/
+
+/* horizontal grid */
+.horizontal-grid-wrapper{
+  width: 525px;
+  height: 105px;
+  background-color: #fff;
+  display: grid;
+ grid-template-columns: 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px ;
+}
+.horizontal-grid-wrapper div{
+  border: 1px solid;
+  border-left:0;
+  border-bottom:0;
+  height: 34px;
+}
+/* vertical grid */
+.vertical-grid-wrapper{
+  width: 105px;
+  height: 525px;
+
+  display: grid;
+ grid-template-columns: 35px 35px 35px;
+ position: absolute;
+ left:210px;
+}
+.vertical-grid-wrapper div{
+  border: 1px solid;
+
+  height: 33px;
+
+}
+
+
+/* middle of the middle section */
+.die{
+  width: 105px;
+  height: 105px;
+  background-color:#FFD8CC;
+  position: relative;
+  left:210px;
+  bottom: 105px;
+}
+.domant{
+  opacity: 0.6;
+}
+
+
+/* player board */
+ .player{
+  width: 210px;
+  height: 210px;
+  display: inline-block;
+  background-color: green;
+  position: relative;
+}
+.seperator1and2{
+  width: 95px;
+  height: 210px;
+  display: inline-block;
+}
+
+.home{
+  width: 160px;
+  height: 160px;
+  background-color: #fff;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin:auto;
+  border-radius: 20%;
+
+}
+
+/*color paller*/
+.r{
+  background-color: red;
+}
+.g{
+  background-color: green;
+
+}
+.b{
+  background-color: blue;
+}
+.y{
+  background-color: yellow;
+}
+
+/* pawns*/
+.pawn{
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+
+  margin:13.2%;
+  border-radius: 100%;
+}
