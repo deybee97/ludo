@@ -1,0 +1,224 @@
+body{
+
+  background-color: #0A1931;
+padding: 40px 0;
+
+
+}
+h1{
+    text-align: center;
+    color: #fff;
+}
+img{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin:auto;
+  width: 70%;
+  background-color: black;
+
+}
+.board{
+  width: 525px;
+  height: 525px;
+  background-color: #fff;
+  margin: 10px auto;
+  position: relative;
+}
+.game-board{
+  position :relative;
+}
+
+
+
+/* the sections */
+.rec1{
+  height: 210px;
+  /* background-color: green; */
+}
+.rec2{
+  height: 105px;
+  background-color: #fff;
+}
+.rec3{
+
+  height:210px;
+  /* background-color: blue; */
+}
+/*middlesection*/
+
+/* horizontal grid */
+.horizontal-grid-wrapper{
+  width: 525px;
+  height: 105px;
+  background-color: #fff;
+  display: grid;
+ grid-template-columns: 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px 35px ;
+}
+.horizontal-grid-wrapper div{
+  border: 1px inset;
+  border-left:0;
+  border-bottom:0;
+  height: 34px;
+}
+/* vertical grid */
+.vertical-grid-wrapper{
+  width: 105px;
+  height: 525px;
+
+  display: grid;
+ grid-template-columns: 35px 35px 35px;
+ position: absolute;
+ left:210px;
+}
+.vertical-grid-wrapper div{
+  border: 1px inset;
+
+  height: 33px;
+
+}
+
+
+/* middle of the middle section */
+.die{
+  width: 105px;
+  height: 105px;
+  background-color:#FFD8CC;
+  position: relative;
+  left:210px;
+  bottom: 105px;
+}
+
+.domant{
+  opacity: 0.4;
+}
+
+
+/* player board */
+ .player{
+  width: 210px;
+  height: 210px;
+  display: inline-block;
+  background-color: green;
+  position: relative;
+}
+.seperator1and2{
+  width: 95px;
+  height: 210px;
+  display: inline-block;
+}
+
+.home{
+  width: 160px;
+  height: 160px;
+  background-color: #fff;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin:auto;
+  border-radius: 20%;
+
+}
+
+/*color paller*/
+.r ,.rHome{
+  background-color: #CE1212;
+
+}
+
+.g, .gHome{
+  background-color: #064420;
+
+}
+
+.b, .bHome{
+  background-color: #04009A;
+}
+
+.y, .yHome{
+  background-color: #FFC107;
+}
+/* linear gradients */
+.y.r{
+  background-image: linear-gradient(90deg, #FFC107, #CE1212 );
+}
+.y.b{
+  background-image: linear-gradient(90deg, #FFC107, #04009A );
+}
+.y.g{
+  background-image: linear-gradient(90deg, #FFC107, #064420);
+}
+.r.b{
+  background-image: linear-gradient(90deg, #04009A, #CE1212 );
+}
+.r.g{
+  background-image: linear-gradient(90deg, #064420, #CE1212 );
+}
+.b.g{
+  background-image: linear-gradient(90deg, #04009A, #064420);
+}
+.b.g.r{
+  background-image: linear-gradient(90deg, #04009A, #064420, #CE1212 );
+}
+.b.g.y{
+  background-image: linear-gradient(90deg, #04009A, #064420, #FFC107 );
+}
+.b.y.r{
+  background-image: linear-gradient(90deg, #04009A, #CE1212, #FFC107 );
+}
+.g.y.r{
+  background-image: linear-gradient(90deg, #CE1212 , #064420, #FFC107 );
+}
+.b.g.y.r{
+  background-image: linear-gradient(90deg, #04009A, #CE1212 , #064420, #FFC107 );
+}
+
+/* pawns*/
+.pawn{
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+
+  margin:13.2%;
+  border-radius: 100%;
+}
+.square{
+  font-size: 1px;
+  border-color: #DFEEEA;
+
+}
+.far{
+  font-size: 25px;
+  color: black;
+}
+
+/* leaderBoard */
+
+.leaderBoard{
+  position: absolute;
+
+  top:70px;
+   right:40px;
+
+}
+.lb-content, .lb-header{
+  background-color: grey;
+  display:flex;
+  margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius:10px;
+  padding-left: 10px;
+    color:#fff;
+}
+.lb-content h4{
+  margin-right: 30px;
+}
+.lb-content p{
+  margin-top: 5px;
+}
