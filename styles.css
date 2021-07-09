@@ -72,6 +72,7 @@ h1{
   left:210px;
   bottom: 105px;
 }
+
 .domant{
   opacity: 0.6;
 }
@@ -106,17 +107,21 @@ h1{
 }
 
 /*color paller*/
-.r{
+.r ,.rHome{
   background-color: red;
+
 }
-.g{
+
+.g, .gHome{
   background-color: green;
 
 }
-.b{
+
+.b, .bHome{
   background-color: blue;
 }
-.y{
+
+.y, .yHome{
   background-color: yellow;
 }
 
