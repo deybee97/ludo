@@ -1,31 +1,29 @@
-// var active = false;
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
-app.use(bodyParser.urelencoded({extended:true}));
-var slotLeft=4;
-var die;
-var moveOn = true;
-var allHomeSafe = false;
-var color = ["y", "g", "r", "b"];
-var nextNum;
-var numofMoves;
-var nextPlayer = 0;
-var started = false;
-var diceState = false;
-var ludoBoardState = false;
+// let active = false;
+let players =[];
+let leaderBoard=[];
+let slotLeft=4;
+let die;
+let moveOn = true;
+let allHomeSafe = false;
+let color = ["y", "g", "r", "b"];
+let nextNum;
+let numofMoves;
+let nextPlayer = 0;
+let started = false;
+let diceState = false;
+let ludoBoardState = false;
 let playerScore =[0,0,0,0];
-// var yNotSafe=[];
-// var gNotSafe=[];
-// var rNotSafe=[];
-// var bNotSafe=[];
-// var outsideNotSafe=[yNotSafe,gNotSafe,rNotSafe,bNotSafe];
-var bSafe = [73, 72, 71, 70, 69];  //bOutside
-var ySafe = [40, 37, 34, 31, 28];
-var rSafe = [4, 7, 10, 13, 16];
-var gSafe = [61, 62, 63, 64, 65];
-var outsideSafe = [ySafe, gSafe, rSafe, bSafe];  //outsideArray
-var squareArray = [39, 36, 33, 30, 27, 80, 79, 78, 77, 76, 75, 60, 45, 46, 47, 48, 49, 50, 15, 12, 9, 6, 3, 0, 1, 2, 5, 8, 11, 14, 17,
+// let yNotSafe=[];
+// let gNotSafe=[];
+// let rNotSafe=[];
+// let bNotSafe=[];
+// let outsideNotSafe=[yNotSafe,gNotSafe,rNotSafe,bNotSafe];
+let bSafe = [73, 72, 71, 70, 69];  //bOutside
+let ySafe = [40, 37, 34, 31, 28];
+let rSafe = [4, 7, 10, 13, 16];
+let gSafe = [61, 62, 63, 64, 65];
+let outsideSafe = [ySafe, gSafe, rSafe, bSafe];  //outsideArray
+let squareArray = [39, 36, 33, 30, 27, 80, 79, 78, 77, 76, 75, 60, 45, 46, 47, 48, 49, 50, 15, 12, 9, 6, 3, 0, 1, 2, 5, 8, 11, 14, 17,
   54, 55, 56, 57, 58, 59, 74, 89, 88, 87, 86, 85, 84, 29, 32, 35, 38, 41, 44, 43, 42
 ];
 
@@ -108,8 +106,7 @@ $(".square").click(function() {
        numofMoves = die + nextNum;
       let dieLeft = die;
 
-      for (nextNum; nextNum < numofMoves; nextNum++) {
-
+   for (nextNum; nextNum < numofMoves; nextNum++) {  //
 
 
 
@@ -169,7 +166,9 @@ $(".square").click(function() {
 
         dieLeft--;
         currentNum++;
+
       }
+
      diceState = true;
     } else {
 
@@ -200,8 +199,8 @@ $(".square").click(function() {
 
 
 ///  event listener for start of the game
-$(document).on("keypress", function(e) {
-  if (!started) {
+$(".start-button").on("click", function() {
+  if (!started && players.length===4) {
 
     $(".safe").addClass("domant");
     $(".square."+color[0]).removeClass(color[0]+" pairs"+color[0]+ " tripplet"+color[0]+" quad"+color[0]+" safe");
@@ -211,10 +210,13 @@ $(document).on("keypress", function(e) {
     $(".pawn").removeClass("domant");
     started = true;
     diceState = true;
+    setTimeout(()=>{
+    $("h1").text(`it's your turn ${players[0]}`);
+  }, 1000);
     $("h1").text("game on!");
   }
 
-  for (var i = 0; i <= 51; i++) {
+  for (let i = 0; i <= 51; i++) {
     // document.querySelectorAll(".square")[squareArray[i]].innerText = i;
     if(i===0 || i===13 || i===26 || i===39){
       document.querySelectorAll(".square")[squareArray[i]].innerHTML = "<i class='far fa-star'></i><p>"+i+"</p>";
@@ -224,7 +226,7 @@ $(document).on("keypress", function(e) {
 
     document.querySelectorAll(".square")[squareArray[i]].classList.add("white-pane");
   }
-  for (var i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     document.querySelectorAll(".square")[ySafe[i]].innerText = i;
     document.querySelectorAll(".square")[gSafe[i]].innerText = i;
     document.querySelectorAll(".square")[rSafe[i]].innerText = i;
@@ -340,7 +342,7 @@ let domantHomeCheck =document.querySelectorAll(".pawn.domant." + color[nextPlaye
     if(document.querySelectorAll(".white-pane."+color[nextPlayer]).length===0){
       let quaterToSafe = document.querySelectorAll(".square.safe."+color[nextPlayer]).length;
       let play = true;
-        for(var i = 0; i<quaterToSafe; i++){
+        for(let i = 0; i<quaterToSafe; i++){
         let text = Number(document.querySelectorAll(".square.safe."+color[nextPlayer])[i].innerText);
         if(text+die<=5){
           play= false;
@@ -381,12 +383,14 @@ if(slotLeft === color.length){
   }
 
   $(".die").addClass(color[nextPlayer]);
+  $("h1").text(`it's your turn ${players[nextPlayer]}`)
 }else{
   slotLeft = color.length;
   if (nextPlayer === (color.length)) {
     nextPlayer = 0;
   }
   $(".die").addClass(color[nextPlayer]);
+  $("h1").text(`it's your turn ${players[nextPlayer]}`)
 }
 }
 
@@ -452,9 +456,10 @@ function sendHomeSafe(colour) {
     if (ind > -1) {
       color.splice(ind, 1);
       outsideSafe.splice(ind, 1);
+      leaderBoard.push(players.splice(ind,1));
     }
     if(color.length===3){
-      
+
     }else if(color.length==2){
 
     }
@@ -470,7 +475,7 @@ function sendHomeSafe(colour) {
 }
 
 function checkForSpaceAtHome(color, reason) {
-  for (var i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     if (!document.querySelectorAll(".player." + color + " .pawn")[i].classList.contains(color)) {
 
       document.querySelectorAll(".player." + color + " .pawn")[i].classList.add(color);
@@ -554,7 +559,7 @@ function homeSafe(color, movesLeft) {
     //     console.log(color);
     //
     // }
-    for (var i = 0; i < movesLeft; i++) {
+    for (let i = 0; i < movesLeft; i++) {
 
       let classList = document.querySelectorAll(".square")[outsideSafe[nextPlayer][i]].classList;
       classList.remove("domant");
@@ -597,3 +602,24 @@ ludoBoardState = false;
 
 
 }
+
+$(".add-button").on("click",function(){
+
+if(players.length!==4){
+  let playerID = document.querySelectorAll(".player-name");
+  let playerNames=[]
+  playerID.forEach((player)=>{
+    if(player.value!==""){
+   playerNames.push(player.value)
+ }
+  })
+  players = playerNames;
+  console.log(players)
+  if(players.length===4){
+    playerID.forEach((input)=>{
+      input.readOnly= true;
+    })
+    $("h1").text("Click start button!");
+  }
+}
+});

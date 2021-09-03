@@ -11,10 +11,11 @@
 </head>
 
 <body>
+  <h1>Input player names and click <span>ADD</span></h1>
   <div class="game-board">
 
 
-  <h1>Click any key to start</h1>
+
   <div class="board">
     <div class="vertical-grid-wrapper">
       <div class="square"></div>
@@ -192,38 +193,36 @@
 
 <div class="leaderBoard" >
   <div class="lb-header">
-    <h3>leaderBoard</h3>
+    <h3>Players</h3>
   </div>
-  <%let i=1%>
-<% players.forEach(function(player){%>
+     <form autocomplete="off">
+       <div class="col-auto inp-div inp-div-1">
+         <input class="player-name player1 form-control" type="text" name="playerName"  placeholder="player 1">
+       </div>
+       <div class="col-auto inp-div inp-div-2">
+         <input class="player-name player2 form-control" type="text" name="playerName" placeholder="player 2">
+       </div>
+       <div class="col-auto inp-div inp-div-3">
+         <input class="player-name player3 form-control" type="text" name="playerName" placeholder="player 3">
+       </div>
+       <div class="col-auto inp-div inp-div-4">
+         <input class="player-name player4 form-control" type="text" name="playerName" placeholder="player 4">
+       </div>
 
-   <div class="lb-content">
-     <h4>player <%= i%> </h4>
-     <p><%=player%></p>
-     <!-- <p><%=point%></p> -->
-   </div>
-   <%i++%>
- <%});%>
-
-
-
-  <form class="row" action="/" method="post">
+     </form>
 
       <div class="col-auto">
-        <input class="form-control" type="text" name="playerName" placeholder="type your name">
-      </div>
-      <div class="col-auto">
-        <button class="btn btn-dark  mb-3"type="submit" name="button">add</button>
+        <button class="btn btn-dark  mb-3 add-button" name="button">add</button>
+        <button class="btn btn-dark  mb-3 start-button" name="button">Start</button>
       </div>
 
-
-  </form>
 
 </div>
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="ludo.js" charset="utf-8"></script>
+    <script src="./ludo.js" charset="utf-8"></script>
+
 </body>
 
 </html>
